@@ -1,0 +1,74 @@
+version: 2
+
+job_defaults: &job_defaults
+  docker:
+    - image: circleci/node:8.10
+  environment:
+    - GIT_COMMIT_DESC: git log --format=oneline -n 1 $CIRCLE_SHA1
+    - PATH: '/opt/yarn/yarn-v1.5.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+
+# -------------------------
+#          JOBS
+# -------------------------
+jobs:
+  checkout-code:
+    <<: *job_defaults
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: .
+          paths: .
+
+  test:
+    <<: *job_defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - restore-cache:
+          key: yarn-cache-{{ arch }}-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+      - run:
+          name: Yarn Install
+          command: yarn install --non-interactive --cache-folder ~/.cache/yarn
+      - save-cache:
+          paths:
+            - ~/.cache/yarn
+          key: yarn-cache-{{ arch }}-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+      - run:
+          name: Run tests
+          command: yarn test
+
+  publish:
+    <<: *job_defaults
+    steps:
+      - attach_workspace:
+          at: .
+      - restore-cache:
+          key: yarn-cache-{{ arch }}-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+      - run:
+          name: Yarn Install
+          command: yarn install --non-interactive --cache-folder ~/.cache/yarn
+      - save-cache:
+          paths:
+            - ~/.cache/yarn
+          key: yarn-cache-{{ arch }}-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+      - run:
+          name: Publish to NPM
+          command: yarn semantic-release
+
+# -------------------------
+#        WORK FLOWS
+# -------------------------
+workflows:
+  version: 2
+  test-publish:
+    jobs:
+      - checkout-code
+      - test:
+          requires:
+            - checkout-code
+      - publish:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
