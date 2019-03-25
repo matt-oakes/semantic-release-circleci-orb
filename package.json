@@ -23,6 +23,7 @@
     "read-pkg": "^5.0.0"
   },
   "devDependencies": {
+    "@semantic-release/git": "^7.0.8",
     "ava": "^1.0.1",
     "clear-module": "^3.0.0",
     "commitizen": "^3.0.5",
@@ -34,7 +35,7 @@
     "mockserver-client": "^5.5.0",
     "nyc": "^13.1.0",
     "p-retry": "^4.0.0",
-    "semantic-release": "^15.12.3",
+    "semantic-release": "^15.13.3",
     "sinon": "^7.1.1",
     "stream-buffers": "^3.0.2",
     "tempy": "^0.2.1",
