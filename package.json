@@ -1,7 +1,7 @@
 {
   "name": "semantic-release-circleci-orb",
   "description": "semantic-release plugin to publish CircleCI Orbs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Matt Oakes (https://mattoakes.net)",
   "scripts": {
     "lint": "xo",
