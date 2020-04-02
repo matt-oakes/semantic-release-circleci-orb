@@ -46,10 +46,11 @@ The plugin can be configured in the [**semantic-release** configuration file](ht
 
 ### Options
 
-| Options   | Description                                                                                                                | Default                           |
-|-----------|----------------------------------------------------------------------------------------------------------------------------|-----------------------------------|
-| `orbName` | **Required**. The name of the Orb in the format of `organisation/orb`. For example, `react-native-community/circleci-orb`. | *None. You need to set your own.* |
-| `orbPath` | The path to the Orb YAML file. This needs to be a single (packed) YAML file.                                               | `orb.yml`                         |
+| Options       | Description                                                                                                                | Default                           |
+|---------------|----------------------------------------------------------------------------------------------------------------------------|-----------------------------------|
+| `orbName`     | **Required**. The name of the Orb in the format of `organisation/orb`. For example, `react-native-community/circleci-orb`. | *None. You need to set your own.* |
+| `commandName` | The name of the CircleCI command to run.                                                                                   | `circleci`                        |
+| `orbPath`     | The path to the Orb YAML file. This needs to be a single (packed) YAML file.                                               | `orb.yml`                         |
 
 ### CircleCI CLI installation
 
