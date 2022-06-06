@@ -10,7 +10,7 @@
     "test": "nyc ava -v"
   },
   "bugs": {
-    "url": "https://github.com/matt-oakes/semantic-release-circleci-orb/issues"
+    "url": "https://github.com/getoutreach/semantic-release-circleci-orb/issues"
   },
   "contributors": [
     "Matt Oakes <hello@mattoakes.net> (https://mattoakes.net)"
@@ -48,7 +48,7 @@
     "lib",
     "index.js"
   ],
-  "homepage": "https://github.com/matt-oakes/semantic-release-circleci-orb#readme",
+  "homepage": "https://github.com/getoutreach/semantic-release-circleci-orb#readme",
   "keywords": [
     "circleci",
     "circleci-orb",
@@ -80,7 +80,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/matt-oakes/semantic-release-circleci-orb.git"
+    "url": "https://github.com/getoutreach/semantic-release-circleci-orb.git"
   },
   "xo": {
     "prettier": true,
