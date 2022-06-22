@@ -31,7 +31,7 @@
     "dockerode": "^2.5.7",
     "fs-extra": "^7.0.1",
     "get-stream": "^5.0.0",
-    "got": "^9.3.2",
+    "got": "^11.8.5",
     "mockserver-client": "^5.5.0",
     "nyc": "^13.1.0",
     "p-retry": "^4.0.0",
